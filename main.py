@@ -1,7 +1,9 @@
 from random import randint
 
 
-def attack(char_name, char_class):
+def attack(char_name: str, char_class: str) -> str:
+    char_class = ""
+
     if char_class == "warrior":
         return f"{char_name} нанёс урон противнику равный {5 + randint(3, 5)}"
     if char_class == "mage":
@@ -9,28 +11,37 @@ def attack(char_name, char_class):
     if char_class == "healer":
         damage = 5 + randint(-3, -1)
         return f"{char_name} нанёс урон противнику равный {damage}"
+    return char_class
 
 
-def defence(char_name, char_class):
+def defence(char_name: str, char_class: str) -> str:
+    char_class = ""
+
     if char_class == "warrior":
         return f"{char_name} блокировал {10 + randint(5, 10)} урона"
     if char_class == "mage":
         return f"{char_name} блокировал {10 + randint(-2, 2)} урона"
     if char_class == "healer":
         return f"{char_name} блокировал {10 + randint(2, 5)} урона"
+    return char_class
 
 
-def special(char_name, char_class):
+def special(char_name: str, char_class: str) -> str:
+    char_class = ""
+
     if char_class == "warrior":
-        return (f"{char_name} применил специальное умение "
-                f"«Выносливость {80 + 25}»")
+        return (
+            f"{char_name} применил специальное умение "
+            "«Выносливость {80 + 25}»"
+        )
     if char_class == "mage":
         return f"{char_name} применил специальное умение «Атака {5 + 40}»"
     if char_class == "healer":
         return f"{char_name} применил специальное умение «Защита {10 + 30}»"
+    return ""
 
 
-def start_training(char_name, char_class):
+def start_training(char_name: str, char_class: str) -> str:
     if char_class == "warrior":
         print(f"{char_name}, ты Воитель — отличный боец ближнего боя.")
     if char_class == "mage":
@@ -38,8 +49,7 @@ def start_training(char_name, char_class):
     if char_class == "healer":
         print(f"{char_name}, ты Лекарь — чародей, способный исцелять раны.")
     print("Потренируйся управлять своими навыками.")
-    print(
-        "Введи одну из команд: attack — чтобы атаковать противника, ")
+    print("Введи одну из команд: attack — чтобы атаковать противника, ")
     print("defence — чтобы блокировать атаку противника или")
     print("special — чтобы использовать специальное умение.")
     print("Если не хочешь тренироваться, введи команду skip.")
@@ -55,9 +65,9 @@ def start_training(char_name, char_class):
     return "Тренировка окончена."
 
 
-def choice_char_class():
-    approve_choice = None
-    char_class = None
+def choice_char_class() -> str | None:
+    approve_choice: str | None = None
+    char_class: str | None = None
     while approve_choice != "y":
         char_class = input(
             "Введи название персонажа, "
@@ -70,8 +80,10 @@ def choice_char_class():
                 "Сильный, выносливый и отважный."
             )
         if char_class == "mage":
-            print("Маг — находчивый воин дальнего боя. "
-                  "Обладает высоким интеллектом.")
+            print(
+                "Маг — находчивый воин дальнего боя. "
+                "Обладает высоким интеллектом."
+            )
         if char_class == "healer":
             print(
                 "Лекарь — могущественный заклинатель. "
